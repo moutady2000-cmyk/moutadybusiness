@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f766e">
+<title>Mbolo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f8f7;color:#17201d}
+.app{max-width:520px;margin:auto;min-height:100vh;background:#fff}
+header{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;padding:26px 18px 24px;border-radius:0 0 28px 28px}
+.top{display:flex;justify-content:space-between;align-items:center}.logo{font-size:30px;font-weight:800}.user{font-size:22px}
+.welcome{margin-top:20px;opacity:.9}h1{font-size:27px;margin:6px 0 18px}
+.search{width:100%;padding:15px;border:0;border-radius:15px;font-size:16px;outline:none}
+main{padding:22px 18px 90px}h2{font-size:20px;margin:6px 0 15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{padding:17px;border:1px solid #e6ece9;border-radius:18px;box-shadow:0 5px 18px #00000008;cursor:pointer}.icon{font-size:29px}.card b{display:block;margin-top:8px}.card span{font-size:13px;color:#68736f}
+.banner{margin:24px 0;padding:20px;border-radius:20px;background:#ecfdf5}.banner b{font-size:18px}.banner p{color:#4b5b55;font-size:14px}
+button{background:#0f766e;color:white;border:0;border-radius:12px;padding:11px 15px;font-weight:bold}
+.products{display:flex;gap:12px;overflow:auto}.product{min-width:145px;border:1px solid #e7ecea;border-radius:16px;padding:12px}.pic{height:85px;border-radius:12px;background:#dff7f3;display:grid;place-items:center;font-size:38px}.product p{font-weight:bold}.price{color:#0f766e;font-weight:800}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);height:68px;background:white;border-top:1px solid #e8ecea;display:flex;justify-content:space-around;align-items:center}nav a{text-decoration:none;color:#65706c;text-align:center;font-size:12px;cursor:pointer}nav .active{color:#0f766e;font-weight:bold}nav div{font-size:21px}
+#message{position:fixed;top:15px;left:50%;transform:translateX(-50%);background:#17201d;color:white;padding:12px 18px;border-radius:14px;display:none;z-index:5;max-width:90%;text-align:center}
+</style>
+</head>
+<body>
+<div id="message"></div>
+<div class="app">
+<header><div class="top"><div class="logo">Mbolo</div><div class="user" onclick="show('Profil Mbolo')">👤</div></div>
+<div class="welcome">Bienvenue sur Mbolo 👋</div>
+<h1>Tout ce dont tu as besoin, près de toi.</h1>
+<input id="search" class="search" placeholder="🔎 Rechercher un produit ou un service" oninput="searchProducts()">
+</header>
+<main>
+<h2>Catégories</h2>
+<div class="grid">
+<div class="card" onclick="show('Catégorie Alimentation')"><div class="icon">🛒</div><b>Alimentation</b><span>Produits du quotidien</span></div>
+<div class="card" onclick="show('Catégorie Logement')"><div class="icon">🏠</div><b>Logement</b><span>Maisons et locations</span></div>
+<div class="card" onclick="show('Catégorie Électronique')"><div class="icon">📱</div><b>Électronique</b><span>Téléphones et appareils</span></div>
+<div class="card" onclick="show('Catégorie Services')"><div class="icon">🛠️</div><b>Services</b><span>Professionnels près de toi</span></div>
+</div>
+<div class="banner"><b>Vends sur Mbolo</b><p>Présente tes produits ou services et trouve des clients autour de toi.</p><button onclick="sell()">Créer une annonce</button></div>
+<h2>À découvrir</h2>
+<div id="products" class="products">
+<div class="product" data-name="jus naturel"><div class="pic">🥤</div><p>Jus naturel</p><span class="price">1 500 FCFA</span></div>
+<div class="product" data-name="smartphone téléphone"><div class="pic">📱</div><p>Smartphone</p><span class="price">85 000 FCFA</span></div>
+<div class="product" data-name="lit moderne"><div class="pic">🛏️</div><p>Lit moderne</p><span class="price">120 000 FCFA</span></div>
+</div>
+</main>
+<nav>
+<a class="active" onclick="show('Accueil')"><div>🏠</div>Accueil</a>
+<a onclick="focusSearch()"><div>🔎</div>Recherche</a>
+<a onclick="sell()"><div>➕</div>Vendre</a>
+<a onclick="show('Messages : cette fonction sera connectée ensuite')"><div>💬</div>Messages</a>
+<a onclick="show('Profil : cette fonction sera connectée ensuite')"><div>👤</div>Profil</a>
+</nav>
+</div>
+<script>
+function show(t){const m=document.getElementById('message');m.textContent=t;m.style.display='block';setTimeout(()=>m.style.display='none',1800)}
+function focusSearch(){document.getElementById('search').focus();window.scrollTo({top:0,behavior:'smooth'})}
+function sell(){show('Création d’annonce : prochaine étape')}
+function searchProducts(){const q=document.getElementById('search').value.toLowerCase().trim();document.querySelectorAll('.product').forEach(p=>p.style.display=(!q||p.dataset.name.includes(q))?'block':'none')}
+</script>
+</body>
+</html>
