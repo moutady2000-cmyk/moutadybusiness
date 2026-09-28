@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MBolo</title>
+</head>
+<body>
+
+  <h1>MBolo</h1>
+  <p>Achetez, vendez et découvrez près de chez vous</p>
+
+  <h2>Catégories</h2>
+
+  <p>🍎 Alimentation</p>
+  <p>👕 Mode</p>
+  <p>📱 Téléphones</p>
+  <p>🏠 Maison</p>
+  <p>🚗 Véhicules</p>
+  <p>🛠️ Services</p>
+
+  <button>＋ Vendre un produit</button>
+
+</body>
+</html>
